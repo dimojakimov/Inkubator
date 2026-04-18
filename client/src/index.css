@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm amber/cream tones — like egg yolk and natural incubation warmth */
+    --background: 38 30% 96%;
+    --foreground: 30 25% 12%;
+    --card: 40 28% 97%;
+    --card-foreground: 30 25% 12%;
+    --popover: 40 28% 97%;
+    --popover-foreground: 30 25% 12%;
+    --primary: 25 85% 45%;
+    --primary-foreground: 38 30% 97%;
+    --secondary: 38 20% 90%;
+    --secondary-foreground: 30 25% 20%;
+    --muted: 38 15% 92%;
+    --muted-foreground: 30 10% 50%;
+    --accent: 38 30% 88%;
+    --accent-foreground: 30 25% 15%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 36 15% 84%;
+    --input: 36 15% 84%;
+    --ring: 25 85% 45%;
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --color-temp-ok: #437A22;
+    --color-temp-warn: #C55700;
+    --color-temp-danger: #A12C2C;
+    --color-humidity-ok: #006494;
+    --color-humidity-warn: #C55700;
+    --color-egg-amber: #E8960A;
+    --color-egg-warm: #F7C35A;
+  }
+
+  .dark {
+    --background: 30 18% 8%;
+    --foreground: 38 15% 88%;
+    --card: 30 16% 11%;
+    --card-foreground: 38 15% 88%;
+    --popover: 30 16% 11%;
+    --popover-foreground: 38 15% 88%;
+    --primary: 25 80% 55%;
+    --primary-foreground: 30 20% 8%;
+    --secondary: 30 12% 18%;
+    --secondary-foreground: 38 10% 80%;
+    --muted: 30 10% 16%;
+    --muted-foreground: 38 8% 55%;
+    --accent: 30 12% 20%;
+    --accent-foreground: 38 15% 85%;
+    --destructive: 0 65% 52%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 8% 22%;
+    --input: 30 8% 22%;
+    --ring: 25 80% 55%;
+
+    --color-temp-ok: #6DAA45;
+    --color-temp-warn: #FDAB43;
+    --color-temp-danger: #DD6974;
+    --color-humidity-ok: #5591C7;
+    --color-humidity-warn: #FDAB43;
+    --color-egg-amber: #FDAB43;
+    --color-egg-warm: #FDD17A;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border box-border;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+    line-height: 1.2;
+  }
+}
+
+/* Egg pulse animation */
+@keyframes egg-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.85; }
+}
+.egg-pulse {
+  animation: egg-pulse 2s ease-in-out infinite;
+}
+
+/* Day cell hover */
+.day-cell {
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.day-cell:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Progress fill */
+@keyframes progress-fill {
+  from { width: 0; }
+  to { width: var(--progress-width); }
+}
+
+/* Alert slide-in */
+@keyframes slide-in {
+  from { transform: translateY(-8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.alert-item {
+  animation: slide-in 200ms ease-out;
+}
+
+/* Gauge */
+.gauge-ring {
+  transition: stroke-dashoffset 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
